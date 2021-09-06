@@ -392,7 +392,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         
         # Check cache
         self.label_files = img2label_paths(self.img_files)  # labels
-        cache_path = str(Path(self.label_files[0]).parent) + '.cache3'  # cached labels
+        cache_path = str(Path(self.label_files[0]).parent)[-3:] + '.cache3'  # cached labels
         if os.path.isfile(cache_path):
             cache = torch.load(cache_path)  # load
             if cache['hash'] != get_hash(self.label_files + self.img_files):  # dataset changed
@@ -676,7 +676,7 @@ class LoadImagesAndLabels9(Dataset):  # for training/testing
 
         # Check cache
         self.label_files = img2label_paths(self.img_files)  # labels
-        cache_path = str(Path(self.label_files[0]).parent) + '.cache3'  # cached labels
+        cache_path = str(Path(self.label_files[0]).parent)[-3:] + '.cache3'  # cached labels
         if os.path.isfile(cache_path):
             cache = torch.load(cache_path)  # load
             if cache['hash'] != get_hash(self.label_files + self.img_files):  # dataset changed
