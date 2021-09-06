@@ -1,6 +1,5 @@
-# train and val datasets (image directory or *.txt file with image paths)
-train: ../Data/train.txt  # 3k9 images
-val: ../Data/val.txt  # 1 images
+train: ../../input/fruit-health/Data/train.txt# 3k9 images
+val: ../../fruit-health/Data/val.txt  # 1 images
 test: ../coco/test-dev2017.txt  # 20k images for submission to https://competitions.codalab.org/competitions/20794
 
 # number of classes
