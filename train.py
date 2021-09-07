@@ -132,10 +132,10 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         if ckpt['optimizer'] is not None:
             optimizer.load_state_dict(ckpt['optimizer'])
             best_fitness = ckpt['best_fitness']
-            best_fitness_p = ckpt['best_fitness_p']
-            best_fitness_r = ckpt['best_fitness_r']
-            best_fitness_ap50 = ckpt['best_fitness_ap50']
-            best_fitness_ap = ckpt['best_fitness_ap']
+            #best_fitness_p = ckpt['best_fitness_p']
+            #best_fitness_r = ckpt['best_fitness_r']
+            #best_fitness_ap50 = ckpt['best_fitness_ap50']
+            #best_fitness_ap = ckpt['best_fitness_ap']
             best_fitness_f = ckpt['best_fitness_f']
 
         # Results
@@ -394,8 +394,8 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                 with open(results_file, 'r') as f:  # create checkpoint
                     ckpt = {'epoch': epoch,
                             'best_fitness': best_fitness,
-                            'best_fitness_p': best_fitness_p,
-                            'best_fitness_r': best_fitness_r,
+                            #'best_fitness_p': best_fitness_p,
+                            #'best_fitness_r': best_fitness_r,
                             'best_fitness_ap50': best_fitness_ap50,
                             'best_fitness_ap': best_fitness_ap,
                             'best_fitness_f': best_fitness_f,
@@ -412,6 +412,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                     torch.save(ckpt, wdir / 'best_{:03d}.pt'.format(epoch))
                 if best_fitness == fi:
                     torch.save(ckpt, wdir / 'best_overall.pt')
+                '''
                 if best_fitness_p == fi_p:
                     torch.save(ckpt, wdir / 'best_p.pt')
                 if best_fitness_r == fi_r:
@@ -420,8 +421,10 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                     torch.save(ckpt, wdir / 'best_ap50.pt')
                 if best_fitness_ap == fi_ap:
                     torch.save(ckpt, wdir / 'best_ap.pt')
+                '''
                 if best_fitness_f == fi_f:
                     torch.save(ckpt, wdir / 'best_f.pt')
+                '''
                 if epoch == 0:
                     torch.save(ckpt, wdir / 'epoch_{:03d}.pt'.format(epoch))
                 if ((epoch+1) % 25) == 0:
@@ -430,6 +433,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                     torch.save(ckpt, wdir / 'last_{:03d}.pt'.format(epoch))
                 elif epoch >= 420: 
                     torch.save(ckpt, wdir / 'last_{:03d}.pt'.format(epoch))
+                '''
                 del ckpt
         # end epoch ----------------------------------------------------------------------------------------------------
     # end training
