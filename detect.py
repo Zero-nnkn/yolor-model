@@ -59,8 +59,7 @@ def detect(save_img=False):
     # Get names and colors
     names = load_classes(names)
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(names))]
-    
-    print(folder)
+
     if not folder:
         # Set Dataloader
         vid_path, vid_writer = None, None
